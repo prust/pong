@@ -2,33 +2,33 @@ local bump = require 'bump'
 
 padding = 30
 ball_size = 15
-speed = 100
+speed = 85
 paddle_speed = 500
 keyboard_speed = 500
 hud_height = 100
 num_lives = 5
 is_paused = false
 players = {
-  { position = 'bottom', size = 0.2, controls = 'wasd' },
-  { position = 'top', size = 0.2, controls = 'arrow_keys' }--,
+  { position = 'left', size = 0.2, controls = 'controller_2' },
+  { position = 'right', size = 0.2, controls = 'controller' }--,
   -- { position = 'left inner', size = 0.15, controls = 'mouse' },
   -- { position = 'right inner', size = 0.15, controls = 'controller' }
 }
 last_player = nil
 
 bricks = {
-  0, 0, 0, 1, 1, 1, 0, 0, 0,
-  0, 0, 0, 1, 1, 1, 0, 0, 0,
-  0, 1, 1, 1, 1, 1, 1, 1, 0,
-  0, 0, 0, 1, 1, 1, 0, 0, 0,
-  0, 0, 0, 1, 1, 1, 0, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0,
+  0, 0, 1, 1, 1, 1, 1, 0, 0,
+  1, 1, 1, 1, 1, 1, 1, 1, 1,
+  0, 0, 1, 1, 1, 1, 1, 0, 0,
+  0, 0, 0, 0, 0, 0, 0, 0, 0,
 }
 num_h_bricks = 9
 brick_height = 20
 brick_width = 75
 brick_spacing = 3
 bricks_left_margin = 300
-bricks_top_margin = 400
+bricks_top_margin = 250
 
 function getBrickXY(ix)
   ix = ix - 1 -- b/c Lua is 1-based
@@ -42,7 +42,7 @@ local ballBumpFilter = function(item, other)
 end
 
 function love.load()
-  love.graphics.setBackgroundColor(255, 244, 204)
+  love.graphics.setBackgroundColor(0, 0, 0)
   love.graphics.setColor(174, 115, 210)
   love.window.setFullscreen(true)
   width, height = love.graphics.getDimensions()
